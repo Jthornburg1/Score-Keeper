@@ -41,18 +41,20 @@ CGFloat margin = 15;
     CGSize contentSize = CGSizeMake(screenWidth, screenHeight * 2);
     self.scrollView.contentSize = contentSize;
     
-    [self addScoreView:0];
+    for (NSInteger i = 0; i < 4; i++) {
+        
     
+    [self addScoreView:i];
+        
+    }
 
 }
-- (void)addScoreView:(int)index
+- (void)addScoreView:(NSInteger)index
 {
     CGFloat scrollViewWidth = self.view.frame.size.width;
     CGFloat screenHeight = self.view.frame.size.height;
     
-    UIView *boxView = [UIView new];
-    boxView.frame = CGRectMake(0, 2, scrollViewWidth, 100);
-    boxView.backgroundColor = [UIColor orangeColor];
+    UIView *boxView = [[UIView alloc]initWithFrame:CGRectMake(0, index * 90, scrollViewWidth, 90)];
     [self.scrollView addSubview:boxView];
     
     self.name = [UITextField new];
